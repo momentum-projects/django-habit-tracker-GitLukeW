@@ -24,7 +24,7 @@ class Habit(models.Model):
         null=TRUE)
     habit = models.CharField(max_length=250)
     created_date = models.DateField(db_index=True, auto_now_add=True)
-    target_goal = models.IntegerField
+    target_goal = models.IntegerField(null=True)
     uom = models.CharField(max_length=250)
 
     def __str__(self):
@@ -36,4 +36,4 @@ class DailyRecord(models.Model):
         Habit, on_delete=models.CASCADE, related_name='habit_dailyrecords',
         null=TRUE)
     date_completed = models.DateField(db_index=True, auto_now_add=True)
-    goal_status = models.IntegerField
+    goal_status = models.IntegerField(null=True)
