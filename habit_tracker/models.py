@@ -20,10 +20,20 @@ class BaseModel(models.Model):
 
 class Habit(models.Model):
     user = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name='user_habits', 
+        CustomUser, on_delete=models.CASCADE, related_name='user_habits',
         null=TRUE)
     habit = models.CharField(max_length=250)
-    target_goal = models.CharField(max_length=250)
+    created_date = models.DateField(db_index=True, auto_now_add=True)
+    target_goal = models.IntegerField
+    uom = models.CharField(max_length=250)
 
     def __str__(self):
         return f'{self.habit}'
+
+
+class DailyRecord(models.Model):
+    habit = models.ForeignKey(
+        Habit, on_delete=models.CASCADE, related_name='habit_dailyrecords',
+        null=TRUE)
+    date_completed = models.DateField(db_index=True, auto_now_add=True)
+    goal_status = models.IntegerField
