@@ -5,5 +5,4 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    pass
-    return render(request, 'habit_tracker/home.html', {})
+    return render(request, "habit_tracker/home.html", {})
