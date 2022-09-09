@@ -25,7 +25,7 @@ class Habit(models.Model):
     habit = models.CharField(max_length=250)
     created_date = models.DateField(db_index=True, auto_now_add=True)
     target_goal = models.IntegerField(null=True)
-    uom = models.CharField(max_length=250)
+    unit_of_measure = models.CharField(max_length=250)
 
     def __str__(self):
         return f'{self.habit}'
